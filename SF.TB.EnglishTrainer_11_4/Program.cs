@@ -1,4 +1,5 @@
 ﻿using System;
+using Telegram.Bot;
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -6,7 +7,22 @@ namespace SF.TB.EnglishTrainer_11_4
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var bot = new BotWorker();
+
+            bot.Inizalize();
+            bot.Start();
+
+            Console.WriteLine("Напишите stop для прекращения работы");
+
+            string command;
+            do
+            {
+                command = Console.ReadLine();
+
+            } while (command != "stop");
+
+            bot.Stop();
+
         }
     }
 }
