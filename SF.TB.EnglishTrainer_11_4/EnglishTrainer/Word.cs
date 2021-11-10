@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -11,8 +9,6 @@ namespace SF.TB.EnglishTrainer_11_4
     {
         public string English { get; set; }
         public string Russian { get; set; }
-
         public string Theme { get; set; }
     }
-
 }

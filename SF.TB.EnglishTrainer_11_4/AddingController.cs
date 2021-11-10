@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-//using TelegramBot.EnglishTrainer.Model;
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -38,7 +36,5 @@ namespace SF.TB.EnglishTrainer_11_4
         {
             return ChatAdding[chat.GetId()];
         }
-
     }
-
 }

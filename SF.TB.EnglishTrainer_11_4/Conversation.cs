@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Telegram.Bot;
 using Telegram.Bot.Types;
-//using TelegramBot.EnglishTrainer.Model;
-
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -60,6 +56,21 @@ namespace SF.TB.EnglishTrainer_11_4
 
             return textMessages;
         }
+        public List<string> GetDictionaryMessages()
+        {
+            var textMessages = new List<string>();
+
+            foreach (Word word in dictionary.Values)
+            {
+                if (word.Russian != null)
+                {
+                    textMessages.Add(" " + word.Russian + " - " + word.English);
+                }
+            }
+
+            return textMessages;
+        }
+
 
         public long GetId() => telegramChat.Id;
 
@@ -96,7 +107,6 @@ namespace SF.TB.EnglishTrainer_11_4
 
             switch (type)
             {
-
                 case TrainingType.EngToRus:
 
                     control = dictionary.Values.FirstOrDefault(x => x.English == word);
@@ -115,7 +125,5 @@ namespace SF.TB.EnglishTrainer_11_4
 
             return result;
         }
-
     }
-
 }

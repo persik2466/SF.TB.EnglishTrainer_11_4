@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 //using TelegramBot.EnglishTrainer.Model;
@@ -13,7 +12,6 @@ namespace SF.TB.EnglishTrainer_11_4
     /// </summary>
     public class AddWordCommand : AbstractCommand
     {
-
         private ITelegramBotClient botClient;
 
         private Dictionary<long, Word> Buffer;
@@ -76,5 +74,4 @@ namespace SF.TB.EnglishTrainer_11_4
         }
 
     }
-
 }

@@ -1,11 +1,7 @@
-﻿using System;
+﻿using SF.TB.EnglishTrainer_11_4.Commands;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
-//using TelegramBot.Commands;
-//using TelegramBot.EnglishTrainer.Model;
-
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -96,7 +92,6 @@ namespace SF.TB.EnglishTrainer_11_4
 
             addingController.AddFirstState(chat);
             command.StartProcessAsync(chat);
-
         }
 
         public void NextStage(string message, Conversation chat)
@@ -106,18 +101,25 @@ namespace SF.TB.EnglishTrainer_11_4
             command.DoForStageAsync(addingController.GetStage(chat), chat, message);
 
             addingController.NextStage(message, chat);
-
         }
-
 
         public void ContinueTraining(string message, Conversation chat)
         {
             var command = Command.Find(x => x is TrainingCommand) as TrainingCommand;
 
             command.NextStepAsync(chat, message);
-
         }
+        public bool IsDictionaryCommand(string message)
+        {
+            var command = Command.Find(x => x.CheckMessage(message));
 
+            return command is DictionaryCommand;
+        }
+        public void StartDictionary(string message, Conversation chat)
+        {
+            var command = Command.Find(x => x.CheckMessage(message)) as DictionaryCommand;
+
+            command.DictionaryText(chat);
+        }
     }
-
 }

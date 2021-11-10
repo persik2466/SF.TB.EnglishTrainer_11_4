@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -13,16 +11,10 @@ namespace SF.TB.EnglishTrainer_11_4
         {
             return message.StartsWith(CommandText);
         }
-        /// <summary>
-        /// Отделение команды от слова
-        /// </summary>
-        /// <param name="message"></param>
-        /// <returns></returns>
+
         public string ClearMessageFromCommand(string message)
         {
             return message.Substring(CommandText.Length + 1);
         }
-
     }
-
 }

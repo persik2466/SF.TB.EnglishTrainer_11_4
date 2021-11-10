@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -9,10 +7,9 @@ namespace SF.TB.EnglishTrainer_11_4
     /// </summary>
     public enum AddingState
     {
-        Russian, //Русское слово (начало ввода)
-        English, //Английское слово
-        Theme,   //Тематика
-        Finish   //Успешный ввод
+        Russian,
+        English,
+        Theme,
+        Finish
     }
-
 }

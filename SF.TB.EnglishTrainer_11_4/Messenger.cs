@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SF.TB.EnglishTrainer_11_4.Commands;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
-//using TelegramBot.Commands;
-
 
 namespace SF.TB.EnglishTrainer_11_4
 {
@@ -24,9 +20,7 @@ namespace SF.TB.EnglishTrainer_11_4
 
             RegisterCommands();
         }
-        /// <summary>
-        /// Регистрация команд
-        /// </summary>
+
         private void RegisterCommands()
         {
             parser.AddCommand(new SayHiCommand());
@@ -35,6 +29,7 @@ namespace SF.TB.EnglishTrainer_11_4
             parser.AddCommand(new DeleteWordCommand());
             parser.AddCommand(new TrainingCommand(botClient));
             parser.AddCommand(new StopTrainingCommand());
+            parser.AddCommand(new DictionaryCommand(botClient));
         }
 
         public async Task MakeAnswer(Conversation chat)
@@ -55,25 +50,25 @@ namespace SF.TB.EnglishTrainer_11_4
                 return;
             }
 
-            if (parser.IsMessageCommand(lastmessage))
+            if (parser.IsDictionaryCommand(lastmessage))
             {
-                await ExecCommand(chat, lastmessage);
+                parser.StartDictionary(lastmessage, chat);
             }
             else
             {
-                var text = CreateTextMessage();
+                if (parser.IsMessageCommand(lastmessage))
+                {
+                    await ExecCommand(chat, lastmessage);
+                }
+                else
+                {
+                    var text = CreateTextMessage();
 
-                await SendText(chat, text);
+                    await SendText(chat, text);
+                }
             }
-
         }
 
-        /// <summary>
-        /// Запуск команд
-        /// </summary>
-        /// <param name="chat"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
         public async Task ExecCommand(Conversation chat, string command)
         {
             if (parser.IsTextCommand(command))
@@ -90,7 +85,6 @@ namespace SF.TB.EnglishTrainer_11_4
                 parser.AddCallback(command, chat);
 
                 await SendTextWithKeyBoard(chat, text, keys);
-
             }
 
             if (parser.IsAddingCommand(command))
@@ -124,5 +118,4 @@ namespace SF.TB.EnglishTrainer_11_4
                 );
         }
     }
-
 }

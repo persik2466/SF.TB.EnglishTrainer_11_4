@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types.ReplyMarkups;
-//using TelegramBot.EnglishTrainer.Model;
-
 
 namespace SF.TB.EnglishTrainer_11_4
 {
     public class TrainingCommand : AbstractCommand, IKeyBoardCommand
     {
-
         private ITelegramBotClient botClient;
 
         private Dictionary<long, TrainingType> training;
@@ -133,5 +129,4 @@ namespace SF.TB.EnglishTrainer_11_4
             await botClient.SendTextMessageAsync(chatId: chat.GetId(), text: text);
         }
     }
-
 }

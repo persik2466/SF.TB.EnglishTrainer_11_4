@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Args;
@@ -43,13 +42,11 @@ namespace SF.TB.EnglishTrainer_11_4
             chat.AddMessage(e.Message);
 
             await SendMessage(chat);
-
         }
 
         private async Task SendMessage(Conversation chat)
         {
             await messanger.MakeAnswer(chat);
-
         }
     }
 }
