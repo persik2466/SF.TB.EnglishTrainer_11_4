@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telegram.Bot;
-//using TelegramBot.EnglishTrainer.Model;
-
 
 namespace SF.TB.EnglishTrainer_11_4
 {

@@ -26,7 +26,6 @@ namespace SF.TB.EnglishTrainer_11_4
 
             return false;
         }
-
         public string ReturnText()
         {
             return "Слово успешно удалено!";

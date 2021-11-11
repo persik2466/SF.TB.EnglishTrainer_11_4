@@ -3,6 +3,9 @@ using Telegram.Bot;
 
 namespace SF.TB.EnglishTrainer_11_4
 {
+    /// <summary>
+    /// English Trainer базовый уровень. Добавлена команда /dictionary
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
